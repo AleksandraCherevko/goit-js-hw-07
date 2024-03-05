@@ -13,6 +13,7 @@ body {
   line-height: 1.5;
 }
 
+/* TASK 2 */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -20,7 +21,7 @@ body {
   list-style: none;
 }
 
-.imageList {
+.gallery-image {
   width: 360px;
   height: 300px;
 }
