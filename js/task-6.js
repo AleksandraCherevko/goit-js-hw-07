@@ -3,43 +3,50 @@
 // // Функція має створювати стільки <div> елементів,
 // скільки вказано в параметрі amount і додавати їх у DOM дочірніми елементами для div#boxes.
 
-// const createBtn = document.querySelector("[data-create]");
-// console.log(createBtn);
-// const destroyBtn = document.querySelector("[data-destroy]");
-// console.log(destroyBtn);
-// const numberEl = document.querySelector("#controls input");
-// console.log(numberEl);
-// const divBox = document.querySelector("#boxes");
-// console.log(divBox);
+const createBtn = document.querySelector("[data-create]");
 
-// function createBoxes(amount) {
-//   for (let i = 0; i < amount; i += 1) {
-//     element = document.createBoxes("div");
-//     element.style.width = 30 + 10 * i + "px";
-//     elem.style.height = 30 + "px";
-//     elment.style.backgroundColor = getRandomHexColor();
-//   }
+const destroyBtn = document.querySelector("[data-destroy]");
 
-//   divBox.append(element);
-// }
+const numberEl = document.querySelector("#controls");
 
-// function destroyBoxes(amount) {
-//   numberEl.value = "";
-//   return (divBox.innerHTML = "");
-// }
-// function getRandomHexColor() {
-//   return `#${Math.floor(Math.random() * 16777215)
-//     .toString(16)
-//     .padStart(6, 0)}`;
-// }
+const divBox = document.querySelector("#boxes");
+let width = 30;
+let height = 30;
 
-// createBtn.addEventListener("click", function () {
-//   let amount = numberEl.value;
-//   if (amount > 0) {
-//     createBoxes(amount);
-//   }
-// });
+const input = document.querySelector("[type='number']");
 
-// destroyBtn.addEventListener("click", function () {
-//   divBox.innerHTML = "";
-// });
+createBtn.addEventListener("click", clickCheck);
+
+function clickCheck(event) {
+  if (input.value < 1 || input.value > 100) {
+    createBoxes(amount);
+
+    return;
+  }
+
+  createBoxes(input.value);
+}
+
+function createBoxes(amount) {
+  for (let i = 0; i < amount; i++) {
+    i = document.createElement("div");
+
+    i.style.width = 30 + 10;
+    i.style.height = 30;
+    i.style.backgroundColor = getRandomHexColor();
+
+    divBox.append(i);
+  }
+}
+destroyBtn.addEventListener("click", deleteFun);
+
+function deleteFun(event) {
+  input.value = "";
+  return (divBox.innetrHTML = "");
+}
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
