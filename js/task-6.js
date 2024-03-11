@@ -10,8 +10,8 @@ const destroyBtn = document.querySelector("[data-destroy]");
 const numberEl = document.querySelector("#controls");
 
 const divBox = document.querySelector("#boxes");
-let width = 30;
-let height = 30;
+let width = 30 + "px";
+let height = 30 + "px";
 
 const input = document.querySelector("[type='number']");
 
@@ -19,8 +19,7 @@ createBtn.addEventListener("click", clickCheck);
 
 function clickCheck(event) {
   if (input.value < 1 || input.value > 100) {
-    createBoxes(amount);
-
+    console.log((input.value = ""));
     return;
   }
 
@@ -29,20 +28,20 @@ function clickCheck(event) {
 
 function createBoxes(amount) {
   for (let i = 0; i < amount; i++) {
-    i = document.createElement("div");
+    const box = document.createElement("div");
 
-    i.style.width = 30 + 10;
-    i.style.height = 30;
-    i.style.backgroundColor = getRandomHexColor();
+    box.style.width = 30 + 10 * i + "px";
+    box.style.height = 30 + 10 * i + "px";
+    box.style.backgroundColor = getRandomHexColor();
 
-    divBox.append(i);
+    divBox.append(box);
   }
 }
 destroyBtn.addEventListener("click", deleteFun);
 
 function deleteFun(event) {
+  divBox.innerHTML = "";
   input.value = "";
-  return (divBox.innetrHTML = "");
 }
 
 function getRandomHexColor() {
