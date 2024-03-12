@@ -37,6 +37,7 @@ function createBoxes(amount) {
     divBox.append(box);
   }
 }
+
 destroyBtn.addEventListener("click", deleteFun);
 
 function deleteFun(event) {
